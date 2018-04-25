@@ -1,0 +1,32 @@
+MOV A 1
+MOV B 1
+
+ADD A B
+MOV C m
+
+ADD B C
+MOV D m
+
+ADD C D
+MOV E m
+
+ADD D E
+MOV F m
+
+ADD E F
+MOV G m
+
+ADD F G
+MOV H m
+
+ADD G H
+MOV I m
+
+ADD H I
+MOV J m
+
+ADD I J
+MOV K m
+
+ADD J K
+MOV L m
