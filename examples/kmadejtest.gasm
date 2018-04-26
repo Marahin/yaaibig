@@ -1,0 +1,6 @@
+MOV A 10 # Store 10 in register A
+MOV B A # Copy value from register A to register B
+ADD A B # Add register A and B and store the result in register C
+JMP 7 # Jump to line #7
+JNZ 7 # Jump to line #7 if the value in register C is non-zero
+MUL A B # Multiply values stored in registers A and B and store them in register C

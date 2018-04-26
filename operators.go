@@ -8,8 +8,13 @@ import (
 
 var OPERATORS = map[string]interface{}{
 	"MOV": gasm_MOV,
+	"mov": gasm_MOV,
+
 	"ADD": gasm_ADD,
+	"add": gasm_ADD,
+
 	"MUL": gasm_MUL,
+	"mul": gasm_MUL,
 }
 
 func Call(operator_name string, params ... interface{}) (result []reflect.Value, err error) {

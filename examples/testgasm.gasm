@@ -1,0 +1,33 @@
+mov A 1 ; a = 1
+mov B 1 ; b = 1
+
+add A B ; m = a + b = 2
+mov C m ; c = m = 2
+
+; ... fibonacci continues; xD
+add B C
+mov D m
+
+add C D
+mov E m
+
+add D E
+mov F m
+
+add E F
+mov G m
+
+add F G
+mov H m
+
+add G H
+mov I m
+
+add H I
+mov J m
+
+add I J
+mov K m
+
+add J K
+mov L m
