@@ -1,9 +1,10 @@
-MOV A 1
-MOV B 1
+MOV A 1 ; a = 1
+MOV B 1 ; b = 1
 
-ADD A B
-MOV C m
+ADD A B ; m = a + b = 2
+MOV C m ; c = m = 2
 
+; ... fibonacci continues; xD
 ADD B C
 MOV D m
 

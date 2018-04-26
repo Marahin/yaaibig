@@ -24,12 +24,16 @@ func main() {
 	scanner.Split(bufio.ScanLines)
 
 	for scanner.Scan() {
-		arguments := strings.Fields(scanner.Text())
-		if len(arguments) == 0 {
+		raw_line := scanner.Text()
+		line_wo_comments := strings.Split(raw_line, ";")
+		arguments := strings.Fields(line_wo_comments[0])
+		if len(arguments) == 0 { // If there are no arguments, then a line should be ignored
 			continue
 		}
+
 		operator_name := arguments[0]
 		parameters_stringified := arguments[1:]
+
 		parameters_interfaced := make([]interface{}, len(parameters_stringified))
 		for index, val := range parameters_stringified {
 			// Try to evalue it into a integer first
