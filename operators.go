@@ -15,6 +15,9 @@ var OPERATORS = map[string]interface{}{
 
 	"MUL": gasm_MUL,
 	"mul": gasm_MUL,
+
+	"JNZ": gasm_JNZ,
+	"jnz": gasm_JNZ,
 }
 
 func Call(operator_name string, params ... interface{}) (result []reflect.Value, err error) {
@@ -43,17 +46,31 @@ func gasm_MOV(cell rune, value interface{}) {
 	}
 }
 
+func gasm_JNZ(value interface{}) {
+	if CurrentMemory() != 0 {
+		switch value_type := value.(type) {
+		case rune:
+			REGISTER['i'] = REGISTER[value.(rune)] - 1
+		case int:
+			REGISTER['i'] = value.(int) - 1
+		default:
+	        fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
+	        os.Exit(1)
+		}
+	}
+}
+
 func gasm_ADD(value1, value2 interface{}) {
 	sum := 0
 	values := []interface{}{value1, value2}
 	for _, value := range values {
-	    switch value1_type := value1.(type) {
+	    switch value_type := value.(type) {
 	    case rune:
 	    	sum += REGISTER[value.(rune)]
 	    case int:
 	        sum += value.(int)
 	    default:
-	        fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value1_type)
+	        fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
 	        os.Exit(1)
 	    }
 	}

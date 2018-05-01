@@ -5,7 +5,10 @@ import (
 	"sort"
 )
 
-var REGISTER = make(map[rune]int)
+var REGISTER = map[rune]int{
+	'i': 0, // current instruction registry
+	'm': 0, // memory registry
+}
 
 func gasm_MEMDUMP() {
 	fmt.Printf("--- gasm_MEMDUMP: ---\n")
@@ -20,4 +23,8 @@ func gasm_MEMDUMP() {
     for _, k := range keys {
 		fmt.Printf("REGISTER %v = %v\n", string(k), REGISTER[k])
     }
+}
+
+func CurrentMemory() int {
+	return REGISTER['m']
 }

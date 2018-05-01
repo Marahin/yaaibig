@@ -25,6 +25,11 @@ func main() {
 
 	for scanner.Scan() {
 		raw_line := scanner.Text()
+		INSTRUCTION_SET = append(INSTRUCTION_SET, raw_line)
+	}
+
+	for !FinishedSourceCode() {
+		raw_line := GetCurrentInstruction()
 		line_wo_comments := strings.Split(raw_line, ";")
 		arguments := strings.Fields(line_wo_comments[0])
 		if len(arguments) == 0 { // If there are no arguments, then a line should be ignored
@@ -54,4 +59,5 @@ func main() {
   	}
 
   	gasm_MEMDUMP()
+  	gasm_INSTRUCTION_DUMP()
 }

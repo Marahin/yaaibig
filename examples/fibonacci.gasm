@@ -1,0 +1,17 @@
+; Setup
+mov A 1
+mov B 1
+mov Z 17711 ; Max
+
+add A B
+mov A B
+mov B m
+
+; Finish condition
+add A B
+mul -1 m
+add m Z
+jnz 6
+
+
+
