@@ -1,6 +1,7 @@
 # yaaibig
 
---
+[![Maintainability](https://api.codeclimate.com/v1/badges/b463e3ee73b8b3c65a41/maintainability)](https://codeclimate.com/github/Marahin/yaaibig/maintainability)
+
 ### Yet Another "Assembly" Interpreter, But In Go
 
 ## What this is
