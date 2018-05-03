@@ -1,6 +1,7 @@
 # yaaibig
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b463e3ee73b8b3c65a41/maintainability)](https://codeclimate.com/github/Marahin/yaaibig/maintainability)
+[ ![Codeship Status for Marahin/yaaibig](https://app.codeship.com/projects/96fd7070-30ed-0136-884d-7e920188431d/status?branch=master)](https://app.codeship.com/projects/288674)
 
 ### Yet Another "Assembly" Interpreter, But In Go
 
