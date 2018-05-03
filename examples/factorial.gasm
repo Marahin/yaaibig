@@ -1,0 +1,13 @@
+; Setup
+mov F 10 ; Base
+mov R 1
+
+; Algorithm
+mov m F
+mul R F
+mov R m
+mov m -1
+add F m
+mov F m
+jnz 4
+
