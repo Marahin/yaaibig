@@ -1,31 +1,22 @@
 package main
 
-import "fmt"
-
 var INSTRUCTION_SET []string
 
-func InstructionsCount() int {
+func instructionsCount() int {
 	return len(INSTRUCTION_SET)
 }
 
-func CurrentInstruction() int {
+func currentInstruction() int {
 	return REGISTER['i']
 }
 
-func FinishedSourceCode() bool {
-	return CurrentInstruction() == InstructionsCount()
+func finishedSourceCode() bool {
+	return currentInstruction() == instructionsCount()
 }
 
-func GetCurrentInstruction() string {
-	instruction := INSTRUCTION_SET[CurrentInstruction()]
+func getCurrentInstruction() string {
+	instruction := INSTRUCTION_SET[currentInstruction()]
 	REGISTER['i'] += 1
 
 	return instruction
-}
-
-func gasm_INSTRUCTION_DUMP() {
-	fmt.Printf("--- gasm_INSTRUCTION_DUMP: ---\n")
-	for id, val := range INSTRUCTION_SET {
-		fmt.Printf("%v: %s\n", id, val)
-	}
 }

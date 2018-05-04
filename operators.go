@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"sort"
 )
 
 var OPERATORS = map[string]interface{}{
@@ -29,7 +30,7 @@ var OPERATORS = map[string]interface{}{
 	"_INSTRUCTION_DUMP": gasm_INSTRUCTION_DUMP,
 }
 
-func Call(operator_name string, params ... interface{}) (result []reflect.Value, err error) {
+func call(operator_name string, params ... interface{}) (result []reflect.Value, err error) {
     f := reflect.ValueOf(OPERATORS[operator_name])
     if len(params) != f.Type().NumIn() {
     	fmt.Fprintf(os.Stderr, "error: The number of parameters is not adapted.\n")
@@ -56,7 +57,7 @@ func gasm_MOV(cell rune, value interface{}) {
 }
 
 func gasm_JNZ(value interface{}) {
-	if CurrentMemory() != 0 {
+	if currentMemory() != 0 {
 		switch value_type := value.(type) {
 		case rune:
 			REGISTER['i'] = REGISTER[value.(rune)] - 1
@@ -136,4 +137,26 @@ func gasm_MUL(value1, value2 interface{}) {
 	}
 
 	REGISTER['m'] = base * multiplier
+}
+
+func gasm_INSTRUCTION_DUMP() {
+	fmt.Printf("--- gasm_INSTRUCTION_DUMP: ---\n")
+	for id, val := range INSTRUCTION_SET {
+		fmt.Printf("%v: %s\n", id, val)
+	}
+}
+
+func gasm_MEMDUMP() {
+	fmt.Printf("--- gasm_MEMDUMP: ---\n")
+	var keys []rune
+    for k := range REGISTER {
+        keys = append(keys, k)
+    }
+	sort.Slice(keys, func(i, j int) bool {
+		return keys[i] < keys[j]
+	})
+
+    for _, k := range keys {
+		fmt.Printf("REGISTER %v = %v\n", string(k), REGISTER[k])
+    }
 }

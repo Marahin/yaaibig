@@ -28,8 +28,8 @@ func main() {
 		INSTRUCTION_SET = append(INSTRUCTION_SET, raw_line)
 	}
 
-	for !FinishedSourceCode() {
-		raw_line := GetCurrentInstruction()
+	for !finishedSourceCode() {
+		raw_line := getCurrentInstruction()
 		line_wo_comments := strings.Split(raw_line, ";")
 		arguments := strings.Fields(line_wo_comments[0])
 		if len(arguments) == 0 { // If there are no arguments, then a line should be ignored
@@ -55,6 +55,6 @@ func main() {
 				parameters_interfaced[index] = int_value
 			}
 		}
-		Call(operator_name, parameters_interfaced...)
+		call(operator_name, parameters_interfaced...)
   	}
 }
