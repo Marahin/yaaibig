@@ -83,7 +83,8 @@ Then it executes `ARG1+ARG2` and stores the result in memory REGISTRY.
 
 ### `jmp`, `JMP`
 
-**NOT IMPLEMENTED YET**
+`jmp` takes one argument (`ARG`).  
+`ARG` has to be an integer value. INSTRUCTION REGISTRY will change to `ARG` (effectively changing the next instruction to be executed). It is basically the same thing as `jnz` but without the zeroed memory condition.
 
 ### `ret`, `RET`
 

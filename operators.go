@@ -19,6 +19,9 @@ var OPERATORS = map[string]interface{}{
 	"JNZ": gasm_JNZ,
 	"jnz": gasm_JNZ,
 
+	"JMP": gasm_JMP,
+	"jmp": gasm_JMP,
+
 	"RET": gasm_RET,
 	"ret": gasm_RET,
 
@@ -63,6 +66,18 @@ func gasm_JNZ(value interface{}) {
 	        fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
 	        os.Exit(1)
 		}
+	}
+}
+
+func gasm_JMP(value interface{}) {
+	switch value_type := value.(type) {
+	case rune:
+		REGISTER['i'] = REGISTER[value.(rune)] - 1
+	case int:
+		REGISTER['i'] = value.(int) - 1
+	default:
+	    fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
+	    os.Exit(1)
 	}
 }
 

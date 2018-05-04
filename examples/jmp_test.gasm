@@ -1,0 +1,8 @@
+mov A 1
+jmp 4 ; Skip 'mov B 2'
+mov B 2
+mov C 3
+
+_MEMDUMP ; 'B should be zeroed or non-existent'
+
+ret C
