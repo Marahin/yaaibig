@@ -18,6 +18,12 @@ var OPERATORS = map[string]interface{}{
 
 	"JNZ": gasm_JNZ,
 	"jnz": gasm_JNZ,
+
+	"RET": gasm_RET,
+	"ret": gasm_RET,
+
+	"_MEMDUMP": gasm_MEMDUMP,
+	"_INSTRUCTION_DUMP": gasm_INSTRUCTION_DUMP,
 }
 
 func Call(operator_name string, params ... interface{}) (result []reflect.Value, err error) {
@@ -76,6 +82,18 @@ func gasm_ADD(value1, value2 interface{}) {
 	}
 
 	REGISTER['m'] = sum
+}
+
+func gasm_RET(value interface{}) {
+	switch value_type := value.(type) {
+	case rune:
+		os.Exit(REGISTER[value.(rune)])
+	case int:
+		os.Exit(value.(int))
+	default:
+        fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
+        os.Exit(1)
+	}
 }
 
 func gasm_MUL(value1, value2 interface{}) {

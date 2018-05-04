@@ -57,7 +57,4 @@ func main() {
 		}
 		Call(operator_name, parameters_interfaced...)
   	}
-
-  	gasm_MEMDUMP()
-  	gasm_INSTRUCTION_DUMP()
 }

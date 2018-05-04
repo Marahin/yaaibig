@@ -11,3 +11,5 @@ add F m
 mov F m
 jnz 4
 
+; Result
+ret R

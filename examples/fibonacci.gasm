@@ -13,5 +13,8 @@ mul -1 m
 add m Z
 jnz 6
 
+; Exit
+ret B
+
 
 
