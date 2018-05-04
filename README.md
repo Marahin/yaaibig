@@ -5,6 +5,15 @@
 
 ### Yet Another "Assembly" Interpreter, But In Go
 
+## Installation
+
+```
+go get go get github.com/Marahin/yaaibig
+```
+
+Then `yaaibig` should be available in your PATH, assuming you have Go folders set up correctly.  
+You can try tinkering with provided [examples](./examples).
+
 ## What this is
 
 This is an interpreter for a very basic, simplified "assembly" dialect. **It does not comply with any standards, although it bases on some of the most popular instructions**.  
