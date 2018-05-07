@@ -2,10 +2,10 @@ package main
 
 import (
 	"bufio"
-	"os"
 	"fmt"
-	"strings"
+	"os"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 		os.Exit(1)
 	}
 	defer inFile.Close()
- 	scanner := bufio.NewScanner(inFile)
+	scanner := bufio.NewScanner(inFile)
 	scanner.Split(bufio.ScanLines)
 
 	for scanner.Scan() {
@@ -56,5 +56,5 @@ func main() {
 			}
 		}
 		call(operator_name, parameters_interfaced...)
-  	}
+	}
 }
