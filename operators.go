@@ -26,6 +26,9 @@ var OPERATORS = map[string]interface{}{
 	"RET": gasm_RET,
 	"ret": gasm_RET,
 
+	"INT": gasm_INT,
+	"int": gasm_INT,
+
 	"_MEMDUMP":          gasm_MEMDUMP,
 	"_INSTRUCTION_DUMP": gasm_INSTRUCTION_DUMP,
 }
@@ -52,6 +55,20 @@ func gasm_MOV(cell rune, value interface{}) {
 		REGISTER[cell] = value.(int)
 	case string:
 		REGISTER[cell] = value.(string)
+	default:
+		fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
+		os.Exit(1)
+	}
+}
+
+func gasm_INT(value interface{}) {
+	debugOutput("REGISTER['m']: %v\n", REGISTER['m'])
+	switch value_type := value.(type) {
+	case string:
+		switch value.(string) {
+		case "21h":
+			_int_21h()
+		}
 	default:
 		fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
 		os.Exit(1)

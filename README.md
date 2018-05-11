@@ -78,47 +78,59 @@ It adds lots of verbosity to the program.
 
 ### Operands
 
-### `mov`, `MOV`
+#### `mov`, `MOV`
 
 `mov` takes two arguments (`ARG1`, `ARG2`).  
 `ARG1` is a REGISTRY, and `ARG2` can be either REGISTRY or VALUE.  
-If `ARG2` is a REGISTRY, then value of REGISTRY `ARG1` will be set to value of `ARG2` REGISTRY.
+If `ARG2` is a REGISTRY, then value of REGISTRY `ARG1` will be set to value of `ARG2` REGISTRY.  
 If `ARG2` is a VALUE, then value of REGISTRY `ARG1` will be set to `ARG2`.  
 
-### `mul`, `MUL`
+#### `mul`, `MUL`
 
 `mul` takes two arguments (`ARG1`, `ARG2`). It has a common implementation like `imul` in the real assembly dialects.  
 For registers, it will evaluate `ARG1` and `ARG2`, as values stored in given registry.  
 Then it executes `ARG1*ARG2` and stores the result in memory REGISTRY.
 
-### `add`, `ADD`
+#### `add`, `ADD`
 
 `add` takes two arguments (`ARG1`, `ARG2`).  
 For registers, it will evaluate `ARG1` and `ARG2`, as values stored in given registry.  
 Then it executes `ARG1+ARG2` and stores the result in memory REGISTRY.
 
-### `jnz`, `JNZ`
+#### `jnz`, `JNZ`
 
 `jnz` takes one argument (`ARG`).  
 `ARG` has to be an integer value. If memory REGISTRY (`m`) is non-zero, then INSTRUCTION REGISTRY will change to `ARG` (effectively changing the next instruction to be executed).
 
-### `jmp`, `JMP`
+#### `jmp`, `JMP`
 
 `jmp` takes one argument (`ARG`).  
 `ARG` has to be an integer value. INSTRUCTION REGISTRY will change to `ARG` (effectively changing the next instruction to be executed). It is basically the same thing as `jnz` but without the zeroed memory condition.
 
-### `ret`, `RET`
+#### `ret`, `RET`
 
 `ret` takes one argument (`ARG`).  
-If `ARG` is a REGISTRY, then it will be evaluated to contained value.
+If `ARG` is a REGISTRY, then it will be evaluated to contained value.  
 If `ARG` is a VALUE, then the program will exit with a status code equal to `ARG`.
 
-### `_MEMDUMP`
+#### `int`, `INT`
+
+`int` takes one argument (`ARG`).  
+`ARG` is a INTERRUPT identifier that points to a particular operation.  
+See INTERRUPTS below for more detailed explanation on each INTERRUPT identifier.
+
+#### `_MEMDUMP`
 
 `_MEMDUMP` takes no arguments.  
 It will display all changed REGISTERs with their values.
 
-### `_INSTRUCTION_DUMP`
+#### `_INSTRUCTION_DUMP`
 
 `_INSTRUCTION_DUMP` takes no arguments.  
 It will display all INSTRUCTIONs (including comments, empty lines) with corresponding line (INSTRUCTION) indexes. 
+
+### Interrupts
+
+#### `21h`
+
+This interrupt signal will print out any VALUE, stored in MEMORY, to standard output.

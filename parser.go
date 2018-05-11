@@ -2,8 +2,8 @@ package main
 
 import (
 	"errors"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func parseLine(line string) (string, []interface{}, error) {
@@ -14,7 +14,7 @@ func parseLine(line string) (string, []interface{}, error) {
 		return "", nil, nil
 	}
 
-	// Catch all string arguments first 
+	// Catch all string arguments first
 	// (MOV A "test") == []string{"MOV A", "test"}
 	argumentsAndStringArguments := removeEmptyStrings(strings.Split(lineWoComments, "\""))
 	nonStringArguments := argumentsAndStringArguments[0]
@@ -59,10 +59,8 @@ func parseLine(line string) (string, []interface{}, error) {
 			continue
 		}
 
-		parametersInterfaced[id] = runes[0]	 // Rune catched
+		parametersInterfaced[id] = runes[0] // Rune catched
 	}
-
 
 	return operatorName, parametersInterfaced, nil
 }
-

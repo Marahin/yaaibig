@@ -1,2 +1,11 @@
-mov A "Some string"
+mov m "TEST"
+int 21h
+mov m "\n"
+int 21h
+mov m "\nTEST 2"
+int 21h
+
+mov m "This\nis\neven\nmore\ncomplex"
+int 21h
+
 _MEMDUMP
