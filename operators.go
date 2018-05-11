@@ -50,6 +50,8 @@ func gasm_MOV(cell rune, value interface{}) {
 		REGISTER[cell] = REGISTER[value.(rune)]
 	case int:
 		REGISTER[cell] = value.(int)
+	case string:
+		REGISTER[cell] = value.(string)
 	default:
 		fmt.Fprintf(os.Stderr, "error: Unsupported type: %T\n", value_type)
 		os.Exit(1)
@@ -60,7 +62,7 @@ func gasm_JNZ(value interface{}) {
 	if currentMemory() != 0 {
 		switch value_type := value.(type) {
 		case rune:
-			REGISTER['i'] = REGISTER[value.(rune)] - 1
+			REGISTER['i'] = REGISTER[value.(rune)].(int) - 1
 		case int:
 			REGISTER['i'] = value.(int) - 1
 		default:
@@ -73,7 +75,7 @@ func gasm_JNZ(value interface{}) {
 func gasm_JMP(value interface{}) {
 	switch value_type := value.(type) {
 	case rune:
-		REGISTER['i'] = REGISTER[value.(rune)] - 1
+		REGISTER['i'] = REGISTER[value.(rune)].(int) - 1
 	case int:
 		REGISTER['i'] = value.(int) - 1
 	default:
@@ -88,7 +90,7 @@ func gasm_ADD(value1, value2 interface{}) {
 	for _, value := range values {
 		switch value_type := value.(type) {
 		case rune:
-			sum += REGISTER[value.(rune)]
+			sum += REGISTER[value.(rune)].(int)
 		case int:
 			sum += value.(int)
 		default:
@@ -103,7 +105,7 @@ func gasm_ADD(value1, value2 interface{}) {
 func gasm_RET(value interface{}) {
 	switch value_type := value.(type) {
 	case rune:
-		os.Exit(REGISTER[value.(rune)])
+		os.Exit(REGISTER[value.(rune)].(int))
 	case int:
 		os.Exit(value.(int))
 	default:
@@ -118,7 +120,7 @@ func gasm_MUL(value1, value2 interface{}) {
 
 	switch value1_type := value1.(type) {
 	case rune:
-		base = REGISTER[value1.(rune)]
+		base = REGISTER[value1.(rune)].(int)
 	case int:
 		base = value1.(int)
 	default:
@@ -128,7 +130,7 @@ func gasm_MUL(value1, value2 interface{}) {
 
 	switch value2_type := value2.(type) {
 	case rune:
-		multiplier = REGISTER[value2.(rune)]
+		multiplier = REGISTER[value2.(rune)].(int)
 	case int:
 		multiplier = value2.(int)
 	default:

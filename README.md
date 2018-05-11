@@ -62,7 +62,19 @@ For example, changing the INSTRUCTION registry value will change which INSTRUCTI
 
 #### VALUE
 
-**In current implementation** VALUE is an `integer`.
+**In current implementation** VALUE is either an `int` or a `string`.
+
+### Flags
+
+#### `-debug`
+
+Currently, only the `DEBUG_FLAG` is a handled flag. **It has to be passed BEFORE the file path.**  
+
+```
+$ ./yaaibig -debug examples/factorial.gasm
+```
+
+It adds lots of verbosity to the program.
 
 ### Operands
 

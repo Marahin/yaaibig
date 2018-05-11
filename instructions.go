@@ -7,7 +7,7 @@ func instructionsCount() int {
 }
 
 func currentInstruction() int {
-	return REGISTER['i']
+	return REGISTER['i'].(int)
 }
 
 func finishedSourceCode() bool {
@@ -16,7 +16,7 @@ func finishedSourceCode() bool {
 
 func getCurrentInstruction() string {
 	instruction := INSTRUCTION_SET[currentInstruction()]
-	REGISTER['i'] += 1
+	REGISTER['i'] = REGISTER['i'].(int) + 1
 
 	return instruction
 }
