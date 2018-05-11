@@ -8,7 +8,7 @@
 ## Installation
 
 ```
-go get go get github.com/Marahin/yaaibig
+go get github.com/Marahin/yaaibig
 ```
 
 Then `yaaibig` should be available in your PATH, assuming you have Go folders set up correctly.  
