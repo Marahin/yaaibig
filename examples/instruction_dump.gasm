@@ -1,7 +1,0 @@
-; Comment 1
-; Comment 2
-mov A 1
-
-_INSTRUCTION_DUMP
-
-ret A

@@ -1,7 +1,0 @@
-mov a 1
-mov b 1
-add a b
-
-_MEMDUMP
-
-ret m
