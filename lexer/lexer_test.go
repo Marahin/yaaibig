@@ -1,9 +1,9 @@
 package lexer
 
 import (
-	"github.com/marahin/yaaibig/lexer"
-	"github.com/marahin/yaaibig/token"
 	"testing"
+
+	"github.com/marahin/yaaibig/token"
 )
 
 func TestNextToken(t *testing.T) {
@@ -33,7 +33,7 @@ add 23 32`
 		{token.INTEGER, "32"},
 	}
 
-	l := lexer.New(input)
+	l := New(input)
 
 	for i, tt := range tests {
 		tok := l.NextToken()
